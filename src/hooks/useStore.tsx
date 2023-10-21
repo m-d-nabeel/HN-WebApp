@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface newsData {
+interface NewsData {
   hits?: {
     objectID: string;
     author: string;
@@ -13,11 +13,11 @@ interface newsData {
   [key: string]: any;
 }
 interface ModalStore {
-  data: newsData;
-  setData: (data: any) => void;
+  data?: NewsData;
+  setData: (data: NewsData) => void;
 }
 
-export const useZuzStore = create<ModalStore>((set) => ({
+export const useZStore = create<ModalStore>((set) => ({
   data: {},
-  setData: (data: any) => set({ data }),
+  setData: (data: NewsData) => set({ data }),
 }));

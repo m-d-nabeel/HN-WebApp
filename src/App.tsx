@@ -1,13 +1,18 @@
-import News from "./components/News";
-import Searchbar from "./components/Searchbar";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Home from "./views/Home";
+import PostDetail from "./views/PostDetail";
 
-function App() {
-  return (
-    <div className="p-12">
-      <Searchbar />
-      <News />
-    </div>
-  );
-}
 
-export default App;
+const Router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">
+      <Route path="" element={<Home />} />
+      <Route path="/postDetails/:objectID" element={<PostDetail />} />
+    </Route>,
+  ),
+);
+export default Router;
