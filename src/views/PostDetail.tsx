@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ArrowLeft } from "lucide-react";
 import axios from "axios";
 import Comment from "@/components/Comment";
 import { timeAgo } from "@/lib/utils";
@@ -8,6 +9,7 @@ import Footer from "@/components/Footer";
 function PostDetail() {
   const { objectID } = useParams();
   const [postDetails, setPostDetails] = useState<any>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPostDetail = async () => {
@@ -38,6 +40,10 @@ function PostDetail() {
 
   return (
     <div className="flex h-screen w-full flex-col gap-y-4 overflow-x-hidden p-12">
+      <ArrowLeft
+        className="absolute left-6 top-6 h-6 w-6 rounded-full transition-all hover:-translate-x-1 hover:cursor-pointer"
+        onClick={() => navigate(-1)}
+      />
       <div className="flex flex-col gap-y-2">
         <div className="flex gap-x-2">
           <span className="text-xs">{postDetails.author}</span>

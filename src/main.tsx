@@ -8,7 +8,7 @@ import bgTexture from "./assets/bgtexture.svg";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div
-      className="fixed h-full w-full overflow-y-auto bg-cover bg-bottom bg-no-repeat"
+      className="fixed h-full w-full overflow-y-auto bg-cover bg-bottom bg-no-repeat brightness-110 contrast-125 saturate-[1.5]"
       style={{ backgroundImage: `url(${bgTexture})` }}
     >
       <RouterProvider router={Router} />
