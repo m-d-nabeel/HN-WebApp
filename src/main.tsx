@@ -3,9 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Router from "./App.tsx";
 import { RouterProvider } from "react-router-dom";
+import bgTexture from "./assets/bgtexture.svg";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <div
+      className="fixed h-full w-full overflow-y-auto bg-cover bg-bottom bg-no-repeat"
+      style={{ backgroundImage: `url(${bgTexture})` }}
+    >
+      <RouterProvider router={Router} />
+    </div>
   </React.StrictMode>,
 );

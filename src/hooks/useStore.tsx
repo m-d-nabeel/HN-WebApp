@@ -14,10 +14,14 @@ interface NewsData {
 }
 interface ModalStore {
   data?: NewsData;
+  searchStoreText?: string;
   setData: (data: NewsData) => void;
+  setSearchStoreText: (searchText: string) => void;
 }
 
 export const useZStore = create<ModalStore>((set) => ({
   data: {},
+  searchStoreText: "",
   setData: (data: NewsData) => set({ data }),
+  setSearchStoreText: (searchStoreText: string) => set({ searchStoreText }),
 }));

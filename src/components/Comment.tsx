@@ -7,8 +7,7 @@ function Comment({ comment, indent }: { comment: any; indent: number }) {
   }
   return (
     <div
-      key={comment.id}
-      className="rounded bg-amber-50 bg-opacity-20 flex flex-col gap-y-2 py-2"
+      className="flex flex-col gap-y-2 rounded border-b border-l border-amber-700 bg-amber-50 bg-opacity-20 py-2 shadow"
       style={{ marginLeft: `${indent * 8}px` }}
     >
       <div
@@ -17,7 +16,7 @@ function Comment({ comment, indent }: { comment: any; indent: number }) {
           __html: he.decode(comment.text, { strict: false }),
         }}
       />
-      <div className="flex gap-x-2 ml-2">
+      <div className="ml-2 flex gap-x-2">
         <h3 className="text-xs font-semibold text-gray-700">
           {comment.author}
         </h3>

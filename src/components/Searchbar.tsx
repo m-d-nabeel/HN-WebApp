@@ -3,24 +3,33 @@ import { Input } from "./ui/input";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useZStore } from "@/hooks/useStore";
+import { useSearchParams } from "react-router-dom";
 
 const Searchbar = () => {
-  const [searchText, setSearchText] = useState<string>("");
-  const { setData } = useZStore();
+  const { setData, searchStoreText, setSearchStoreText } = useZStore();
+  const [searchText, setSearchText] = useState<string>(searchStoreText || "");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const debouncedValue = useDebounce<string>(searchText, 1000);
+  const debouncedValue = useDebounce<string>(searchText, 500);
 
   useEffect(() => {
+    setSearchParams({ searchText: debouncedValue ?? searchStoreText! });
+  }, [debouncedValue, searchStoreText, setSearchParams]);
+
+  useEffect(() => {
+    const apiSearchParam = searchParams.get("searchText");
+    setSearchStoreText(apiSearchParam || "");
+
     const handleSearch = async () => {
       try {
         let response;
-        if (debouncedValue.length === 0) {
+        if (apiSearchParam && apiSearchParam.length > 1) {
           response = await axios.get(
-            "http://hn.algolia.com/api/v1/search?tags=front_page",
+            `http://hn.algolia.com/api/v1/search?query=${apiSearchParam}`,
           );
         } else {
           response = await axios.get(
-            `http://hn.algolia.com/api/v1/search?query=${debouncedValue}`,
+            "http://hn.algolia.com/api/v1/search?tags=front_page",
           );
         }
         setData(response.data);
@@ -29,13 +38,14 @@ const Searchbar = () => {
       }
     };
     handleSearch();
-  }, [debouncedValue, setData]);
+  }, [searchParams, setData, setSearchStoreText]);
 
   return (
     <div>
       <Input
         placeholder="Enter text to search"
         onChange={(e) => setSearchText(e.target.value)}
+        value={searchText}
         className="bg-amber-50 ring-amber-900 focus-visible:ring-amber-200"
       />
     </div>
