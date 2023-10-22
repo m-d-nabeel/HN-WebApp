@@ -25,11 +25,11 @@ const Searchbar = () => {
         let response;
         if (apiSearchParam && apiSearchParam.length > 1) {
           response = await axios.get(
-            `http://hn.algolia.com/api/v1/search?query=${apiSearchParam}`,
+            `https://hn.algolia.com/api/v1/search?query=${apiSearchParam}`,
           );
         } else {
           response = await axios.get(
-            "http://hn.algolia.com/api/v1/search?tags=front_page",
+            "https://hn.algolia.com/api/v1/search?tags=front_page",
           );
         }
         setData(response.data);
