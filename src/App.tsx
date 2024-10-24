@@ -14,7 +14,7 @@ const Router = createBrowserRouter(
     </Route>,
   ),
   {
-    basename: "HN-WepApp",
+    basename: "HN-WebApp",
   },
 );
 export default Router;
