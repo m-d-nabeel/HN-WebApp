@@ -6,7 +6,6 @@ import {
 import Home from "./views/Home";
 import PostDetail from "./views/PostDetail";
 
-
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -14,8 +13,8 @@ const Router = createBrowserRouter(
       <Route path="/postDetails/:objectID" element={<PostDetail />} />
     </Route>,
   ),
-  //{
-  //  basename: "hackernews-web"
-  //}
+  {
+    basename: "HN-WepApp",
+  },
 );
 export default Router;
