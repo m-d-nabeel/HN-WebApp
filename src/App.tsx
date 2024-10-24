@@ -13,8 +13,8 @@ const Router = createBrowserRouter(
       <Route path="/postDetails/:objectID" element={<PostDetail />} />
     </Route>,
   ),
-  {
-    basename: "HN-WebApp",
-  },
+  //{
+  //  basename: "HN-WebApp",
+  //},
 );
 export default Router;
