@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       className="fixed h-full w-full overflow-y-auto bg-cover bg-bottom bg-no-repeat brightness-110 contrast-125 saturate-[1.5]"
       style={{ backgroundImage: `url(${bgTexture})` }}
     >
-      <RouterProvider basename="hackernews-web" router={Router} />
+      <RouterProvider router={Router} />
     </div>
   </React.StrictMode>,
 );

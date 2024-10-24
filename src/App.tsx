@@ -14,5 +14,8 @@ const Router = createBrowserRouter(
       <Route path="/postDetails/:objectID" element={<PostDetail />} />
     </Route>,
   ),
+  {
+    basename: "hackernews-web"
+  }
 );
 export default Router;
